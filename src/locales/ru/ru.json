@@ -1,0 +1,62 @@
+{
+  "start": {
+    "game_title": "Игра",
+    "edition": "Издание",
+    "region": "Регион",
+    "selected_dlc": "Выбранные DLC",
+    "description": "Описание игры",
+    "delivery_starts_in": "Доставка будет начата через",
+    "not_your_profile": "Это не ваш профиль?",
+    "update": "Обновить",
+    "skip_timer": "Пропустить таймер?",
+    "deliver_now": "Доставить прямо сейчас",
+    "changed_mind": "Передумали?",
+    "cancel_delivery": "Отменить доставку",
+    "minutes_seconds": "Через {{minutes}} мин. {{seconds}} сек."
+  },
+  "footer": {
+    "ask_question": "Задать вопрос",
+    "language": "Язык"
+  },
+  "header": {
+    "balance": "Пополнить баланс",
+    "find_delivery": "Найти доставку",
+    "navigation": "Навигация"
+  },
+  "error": {
+    "default_title": "Требуется связаться с менеджером!",
+    "contact_button": "Связаться",
+    "deliveryCancelled": "Доставка отменена!",
+    "contactManagerCancelled": "Вы отменили доставку, свяжитесь с менеджером",
+    "contactManagerRequired": "Требуется связаться с менеджером!",
+    "wrongCountrySelected": "Вы выбрали неверную страну аккаунта, свяжитесь с менеджером!",
+    "manualDelivery": "Доставка будет проходить в ручном режиме!"
+  },
+  "findDelivery": {
+    "searchingForDelivery": "Ищем вашу доставку",
+    "text": "Введите уникальный код покупки"
+  },
+  "find_delivery_title": "Ищем вашу доставку",
+  "error_text_uniq_no": "Ваша доставка не была найдена, свяжитесь менеджером!",
+  "error_text_manually": "Доставка будет проходить в ручном режиме, свяжитесь с менеджером",
+  "error_text_error_786": "Ссылка на ваш профиль была указана неверно, свяжитесь с менеджером!",
+  "error_text_cancel_buy": "Вы отменили доставку, свяжитесь с менеджером",
+  "error_title_cancel_buy": "Доставка отменена!",
+  "bought_game": "Вы купили игру?",
+  "enter_unique_code": "Введите уникальный код покупки",
+  "unique_code_placeholder": "Уникальный код",
+  "proceed_to_delivery": "Перейти к доставке",
+  "default": {
+    "search_delivery": "Ищите доставку?",
+    "top_up": "Пополнение",
+    "games_dlc": "Игры и DLC",
+    "go_to": "Перейти"
+  },
+  "home": {
+    "delivery_completed": "Доставка завершена!",
+    "enjoy_game_leave_review": "Приятной игры! Оставьте пожалуйста отзыв, за него получите промокод на будущие покупки!",
+    "add_to_library": "Добавить в библиотеку",
+    "check_edition": "Проверить издание",
+    "go_to_delivery": "Перейти к доставке"
+  }
+}

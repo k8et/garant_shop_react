@@ -1,0 +1,62 @@
+{
+  "start": {
+    "game_title": "Game",
+    "edition": "Edition",
+    "region": "Region",
+    "selected_dlc": "Selected DLC",
+    "description": "Game Description",
+    "delivery_starts_in": "Delivery starts in",
+    "not_your_profile": "Not your profile?",
+    "update": "Update",
+    "skip_timer": "Skip Timer?",
+    "deliver_now": "Deliver Now",
+    "changed_mind": "Changed Your Mind?",
+    "cancel_delivery": "Cancel Delivery",
+    "minutes_seconds": "In {{minutes}} min. {{seconds}} sec."
+  },
+  "footer": {
+    "ask_question": "Ask a Question",
+    "language": "Language"
+  },
+  "header": {
+    "balance": "Top up balance",
+    "find_delivery": "Find delivery",
+    "navigation": "Navigation"
+  },
+  "error": {
+    "default_title": "Need to contact the manager!",
+    "contact_button": "Contact",
+    "deliveryCancelled": "Delivery cancelled!",
+    "contactManagerCancelled": "You have cancelled the delivery, please contact the manager",
+    "contactManagerRequired": "Contact manager required!",
+    "wrongCountrySelected": "You selected the wrong account country, please contact the manager!",
+    "manualDelivery": "Delivery will be carried out manually!"
+  },
+  "findDelivery": {
+    "searchingForDelivery": "Searching for your delivery",
+    "text": "Enter your unique purchase code"
+  },
+  "find_delivery_title": "Searching for your delivery",
+  "error_text_uniq_no": "Your delivery was not found, contact the manager!",
+  "error_text_manually": "Delivery will be in manual mode, contact the manager",
+  "error_text_error_786": "The link to your profile was incorrect, contact the manager!",
+  "error_text_cancel_buy": "You canceled the delivery, contact the manager",
+  "error_title_cancel_buy": "Delivery canceled!",
+  "bought_game": "Did you buy the game?",
+  "enter_unique_code": "Enter the unique purchase code",
+  "unique_code_placeholder": "Unique code",
+  "proceed_to_delivery": "Proceed to delivery",
+  "default": {
+    "search_delivery": "Looking for delivery?",
+    "top_up": "Top Up",
+    "games_dlc": "Games and DLC",
+    "go_to": "Go To"
+  },
+  "home": {
+    "delivery_completed": "Delivery completed!",
+    "enjoy_game_leave_review": "Enjoy the game! Please leave a review to receive a promo code for future purchases!",
+    "add_to_library": "Add to library",
+    "check_edition": "Check edition",
+    "go_to_delivery": "Go to delivery"
+  }
+}
