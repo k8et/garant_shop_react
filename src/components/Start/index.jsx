@@ -7,7 +7,8 @@ import FindDelivery from "../FindDelivery";
 import Input from "../Inputs/Input";
 import Button from "../Button";
 import useForm from "../../hooks/useForm";
-
+import {format, toZonedTime} from 'date-fns-tz';
+const moscowTimeZone = 'Europe/Moscow';
 const initialData = {
     link: "",
 };
@@ -120,13 +121,20 @@ const Start = ({data, setResponse}) => {
     };
     const dlcs = dlc ? dlc.split(',') : [];
 
+
     const deliveryDate = new Date(date);
     const deliveryStartTime = new Date(deliveryDate.getTime() + 3 * 60 * 1000);
 
-    const {
-        seconds,
-        minutes,
-    } = useTimer({expiryTimestamp: deliveryStartTime, onExpire: () => handleStart()});
+    const moscowDeliveryStartTime = toZonedTime(deliveryStartTime, moscowTimeZone);
+
+    const formattedMoscowTime = format(moscowDeliveryStartTime, 'yyyy-MM-dd HH:mm:ssXXX', { timeZone: moscowTimeZone });
+
+    const expiryTimestamp = new Date(formattedMoscowTime);
+
+    const { seconds, minutes } = useTimer({
+        expiryTimestamp,
+        onExpire: () => handleStart()
+    });
 
     const {
         form,
