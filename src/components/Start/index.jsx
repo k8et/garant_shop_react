@@ -7,8 +7,7 @@ import FindDelivery from "../FindDelivery";
 import Input from "../Inputs/Input";
 import Button from "../Button";
 import useForm from "../../hooks/useForm";
-import {format, toZonedTime} from 'date-fns-tz';
-const moscowTimeZone = 'Europe/Moscow';
+
 const initialData = {
     link: "",
 };
@@ -30,6 +29,7 @@ const Start = ({data, setResponse}) => {
         uniquecode
     } = data;
     const [responseStart, setResponseStart] = useState(null);
+    const [defaultsLoading, setDefaultLoading] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [isSuccessStart, setIsSuccessStart] = useState(null);
@@ -40,6 +40,7 @@ const Start = ({data, setResponse}) => {
     const uniqueCode = params.get("uniquecode");
 
     const changeUrl = async () => {
+        setDefaultLoading(true)
         const url = `?uniquecode=${uniqueCode}`;
         try {
             const res = await httpService.get(url);
@@ -47,12 +48,12 @@ const Start = ({data, setResponse}) => {
         } catch (error) {
             window.location.href = "/delivery"
         } finally {
-            setIsLoading(false);
+            setDefaultLoading(false);
         }
     };
     const onSubmit = async (form) => {
+        setDefaultLoading(true)
         try {
-
             const formData = new FormData();
             formData.append('new_link', form.link);
             formData.append('uniq', uniquecode);
@@ -62,10 +63,12 @@ const Start = ({data, setResponse}) => {
         } catch (error) {
             setResponseStart(null);
         } finally {
+            setDefaultLoading(false)
             changeUrl()
         }
     };
     const handleCancel = async () => {
+        setDefaultLoading(true)
         try {
             const formData = new FormData();
             formData.append('uniq', uniquecode);
@@ -75,9 +78,12 @@ const Start = ({data, setResponse}) => {
                 });
         } catch (error) {
             console.error("Error submitting form:", error);
+        } finally {
+            setDefaultLoading(false)
         }
     };
     const handleInvite = async () => {
+        setDefaultLoading(true)
         try {
             const formData = new FormData();
             formData.append('uniq', uniquecode);
@@ -88,6 +94,8 @@ const Start = ({data, setResponse}) => {
                 });
         } catch (error) {
             console.error("Error submitting form:", error);
+        } finally {
+            setDefaultLoading(false)
         }
     };
     const handleStart = async () => {
@@ -107,6 +115,7 @@ const Start = ({data, setResponse}) => {
     };
 
     const handleStartForNo = async () => {
+        setDefaultLoading(true)
         try {
             const formData = new FormData();
             formData.append('uniq', uniquecode);
@@ -117,20 +126,17 @@ const Start = ({data, setResponse}) => {
                 });
         } catch (error) {
             console.error("Error submitting form:", error);
+        } finally {
+            setDefaultLoading(false)
         }
     };
     const dlcs = dlc ? dlc.split(',') : [];
-
-
-    const deliveryDate = new Date(date);
-    const deliveryStartTime = new Date(deliveryDate.getTime() + 3 * 60 * 1000);
-
-    const moscowDeliveryStartTime = toZonedTime(deliveryStartTime, moscowTimeZone);
-
-    const formattedMoscowTime = format(moscowDeliveryStartTime, 'yyyy-MM-dd HH:mm:ssXXX', { timeZone: moscowTimeZone });
-
-    const expiryTimestamp = new Date(formattedMoscowTime);
-
+    const now = new Date();
+    const moscowTime = new Date(now.toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' }));
+    const moment = require('moment-timezone');
+    const serverTimestamp = moment(date).valueOf();
+    const timeDifference = serverTimestamp - moscowTime.getTime();
+    const expiryTimestamp = moscowTime.getTime() + timeDifference + (3 * 60 * 1000);
     const { seconds, minutes } = useTimer({
         expiryTimestamp,
         onExpire: () => handleStart()
@@ -258,16 +264,22 @@ const Start = ({data, setResponse}) => {
 
         return () => clearTimeout(timeoutId);
     }, [isSuccessEndBuy]);
+    if (defaultsLoading) return <FindDelivery simple/>
 
     if (isSuccess) return <Error title={t('error.deliveryCancelled')} text={t('error.contactManagerCancelled')}/>;
+
     if (responseStart?.status === "cant_access") return <Error title={"Не удалось поменять ссылку"}
                                                                text={"На данном этапе нельзя менять ссылку"}/>;
+
     if (isSuccessEndBuy === "error_53") return <Error title={t('error.contactManagerRequired')}
                                                       text={t('error.wrongCountrySelected')}/>;
+
     if (isSuccessEndBuy === "error_27") return <Error title={t('error.contactManagerRequired')}
                                                       text={t('error.manualDelivery')}/>;
+
     if (isSuccessEndBuy === "error_92") return <Error title={t('error.contactManagerRequired')}
                                                       text={t('error.manualDelivery')}/>;
+
     if (isLoading) return <FindDelivery title={"Доставка"} text={"Продолжаю доставку..."}/>;
     if (isSuccessStart === "no") {
         return <FindDelivery title={"Доставка"} text={"Наш курьер скоро вам отправит заявку в друзья"}/>

@@ -3,9 +3,17 @@ import {useTranslation} from 'react-i18next';
 import Button from "../Button";
 import Loader from "../Loader";
 
-const FindDelivery = ({title, text, client, response}) => {
+const FindDelivery = ({title, text, client, response, simple}) => {
     const {t} = useTranslation();
-
+    if (simple) {
+        return <div
+            className={"absolute z-[99] bg-[#1C1C1C] left-0  top-0 h-full w-full flex items-center justify-center"}>
+            <section
+                className="flex flex-col justify-center max-md:p-3  p-11 w-[514px] max-h-[271px] bg-[#929292]/5 max-xl:w-full gap-11 rounded-3xl border border-solid border-white border-opacity-10 ">
+                <Loader/>
+            </section>
+        </div>
+    }
     return (
         <div className={"absolute z-[99] bg-[#1C1C1C] left-0  top-0 h-full w-full flex items-center justify-center"}>
             {client ?

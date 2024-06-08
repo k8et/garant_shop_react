@@ -13,6 +13,7 @@ export default function Home() {
     const [responseDefault, setResponseDefault] = useState('');
     const [responseInvite, setResponseInvite] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [defaultsLoading, setDefaultLoading] = useState(false)
     const currentUrl = new URL(window.location.href);
     const params = new URLSearchParams(currentUrl.search);
     const uniqueCode = params.get("uniquecode");
@@ -24,12 +25,13 @@ export default function Home() {
             const res = await httpService.get(url);
             setResponse(res.data.content);
         } catch (error) {
-            console.log(error,"error")
+            console.log(error, "error")
         } finally {
             setIsLoading(false);
         }
     };
     const handleInvite = async () => {
+        setDefaultLoading(true)
         try {
             const formData = new FormData();
             formData.append('uniq', uniqueCode);
@@ -40,6 +42,8 @@ export default function Home() {
                 });
         } catch (error) {
             console.error("Error submitting form:", error);
+        } finally {
+            setDefaultLoading(false)
         }
     };
 
@@ -47,7 +51,7 @@ export default function Home() {
         if (response?.status !== "done_client" && uniqueCode) {
             console.log("asd");
             changeUrl();
-        }else {
+        } else {
             httpService.get("/")
                 .then(r => {
                     setResponseDefault(r.data.content)
@@ -55,7 +59,6 @@ export default function Home() {
                 });
         }
     }, []);
-
 
 
     useEffect(() => {
@@ -130,6 +133,9 @@ export default function Home() {
             changeUrl()
         }
     }, [responseInvite]);
+    if (defaultsLoading) {
+        return <FindDelivery simple/>
+    }
 
     if (isLoading) {
         return <FindDelivery title={t("find_delivery_title")}/>

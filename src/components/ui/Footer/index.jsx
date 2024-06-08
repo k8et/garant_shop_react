@@ -20,8 +20,10 @@ const Footer = () => {
     return (
         <div className="w-full h-[100px] z-[120] flex items-center justify-center">
             <div className="flex items-center relative justify-center gap-2 ">
-                <Icon className="" name="telegram" height={52} width={52}/>
-                <Button className="!bg-none border border-[#745EEC] !h-[53px]">{t('footer.ask_question')}</Button>
+                <a target={"_blank"} href="https://t.me/garantshopinfo" className={"flex gap-2"}>
+                    <Icon className="" name="telegram" height={52} width={52}/>
+                    <Button className="!bg-none border border-[#745EEC] !h-[53px]">{t('footer.ask_question')}</Button>
+                </a>
                 <button
                     onClick={toggleDropdown}
                     className="w-[173px] text-2xl h-[53px] max-md:hidden flex items-center justify-center gap-2"
@@ -37,7 +39,7 @@ const Footer = () => {
                             className="px-4 py-2 border border-transparent flex items-center justify-between  gap-2 hover:border-white/10 rounded-xl  cursor-pointer hover:bg-[#161718]"
                             onClick={() => changeLanguage('ru')}
                         >
-                            <img   alt={""} className={"mt-[6px]"} width={30} height={30} src={ru}/>
+                            <img alt={""} className={"mt-[6px]"} width={30} height={30} src={ru}/>
                             Русский
                         </div>
                         <div
