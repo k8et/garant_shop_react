@@ -42,7 +42,7 @@
   "error_text_error_786": "The link to your profile was incorrect, contact the manager!",
   "error_text_cancel_buy": "You canceled the delivery, contact the manager",
   "error_title_cancel_buy": "Delivery canceled!",
-  "bought_game": "Did you buy the game?",
+  "bought_game": "Did you buy the game or DLC?",
   "enter_unique_code": "Enter the unique purchase code",
   "unique_code_placeholder": "Unique code",
   "proceed_to_delivery": "Proceed to delivery",
@@ -57,6 +57,6 @@
     "enjoy_game_leave_review": "Enjoy the game! Please leave a review to receive a promo code for future purchases!",
     "add_to_library": "Add to library",
     "check_edition": "Check edition",
-    "go_to_delivery": "Go to delivery"
+    "go_to_delivery": "Leave review"
   }
 }

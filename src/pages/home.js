@@ -32,7 +32,6 @@ export default function Home() {
         }
     };
     const handleInvite = async () => {
-        setDefaultLoading(true)
         try {
             const formData = new FormData();
             formData.append('uniq', uniqueCode);
@@ -44,7 +43,6 @@ export default function Home() {
         } catch (error) {
             console.error("Error submitting form:", error);
         } finally {
-            setDefaultLoading(false)
         }
     };
 
@@ -170,7 +168,7 @@ export default function Home() {
         <main className="flex max-h-full w-full flex-col bg-[#1C1C1C] items-center p-11 max-2xl:p-3 justify-center">
             {response?.status === "uniq_no" &&
                 <div>
-                    <Error text={t("error_text_uniq_no")}/>
+                    <Error status={response?.status} text={t("error_text_uniq_no")}/>
                 </div>
             }
             {response?.status === "Manually" &&

@@ -9,7 +9,7 @@ const initialData = {
 }
 export default function Delivery() {
     const {t} = useTranslation();
-    const {handlerChange, handlerSubmit, form, setForm} = useForm({
+    const {handlerChange, handlerSubmit, form} = useForm({
         data: initialData,
         onSubmit
     });

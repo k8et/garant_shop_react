@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from "../Button";
 
-const Error = ({ text, title }) => {
+const Error = ({ text, title, status }) => {
     const { t } = useTranslation();
 
     return (
@@ -14,7 +14,7 @@ const Error = ({ text, title }) => {
             <p className="text-2xl text-zinc-400 text-center">
                 {text}
             </p>
-            <Button href={"https://t.me/garantshopinfo"} className={"!h-[50px]"}>
+            <Button href={status === "uniq_no" ? "https://t.me/garantshopinfo" : "https://oplata.info/"} className={"!h-[50px]"}>
                 {t('error.contact_button')}
             </Button>
         </section>

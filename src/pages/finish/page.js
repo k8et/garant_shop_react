@@ -20,13 +20,15 @@ export default function Finish() {
                 <article className="flex w-full gap-5 flex-col">
                     <div className={"grid w-full grid-cols-2 max-xl:grid-cols-1 gap-5"}>
                         <a
+                            target={"_blank"}
                             href="https://steamcommunity.com/my/inventory/#pending_gifts"
-                            className={"justify-center w-full items-center flex  px-3.5 h-[50px] text-2xl font-medium text-center text-violet-50 rounded-xl shadow-sm !bg-[#4F4F4F] max-md:text-xl"}>
+                            className={"justify-center w-full items-center flex  px-3.5 h-[50px] text-2xl font-medium text-center text-violet-50 rounded-xl shadow-sm !bg-[#4F4F4F] max-md:text-xl"} rel="noreferrer">
                             {t('home.add_to_library')}
                         </a>
                         <a
+                            target={"_blank"}
                             href="https://store.steampowered.com/account/licenses/"
-                            className={"justify-center w-full items-center flex  px-3.5 h-[50px] text-2xl font-medium text-center text-violet-50 rounded-xl shadow-sm !bg-[#4F4F4F] max-md:text-xl"}>
+                            className={"justify-center w-full items-center flex  px-3.5 h-[50px] text-2xl font-medium text-center text-violet-50 rounded-xl shadow-sm !bg-[#4F4F4F] max-md:text-xl"} rel="noreferrer">
                             {t('home.check_edition')}
                         </a>
                     </div>

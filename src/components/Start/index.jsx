@@ -52,7 +52,6 @@ const Start = ({data, setResponse}) => {
         }
     };
     const onSubmit = async (form) => {
-        setDefaultLoading(true)
         try {
             const formData = new FormData();
             formData.append('new_link', form.link);
@@ -63,12 +62,10 @@ const Start = ({data, setResponse}) => {
         } catch (error) {
             setResponseStart(null);
         } finally {
-            setDefaultLoading(false)
             changeUrl()
         }
     };
     const handleCancel = async () => {
-        setDefaultLoading(true)
         try {
             const formData = new FormData();
             formData.append('uniq', uniquecode);
@@ -79,11 +76,9 @@ const Start = ({data, setResponse}) => {
         } catch (error) {
             console.error("Error submitting form:", error);
         } finally {
-            setDefaultLoading(false)
         }
     };
     const handleInvite = async () => {
-        setDefaultLoading(true)
         try {
             const formData = new FormData();
             formData.append('uniq', uniquecode);
@@ -95,7 +90,6 @@ const Start = ({data, setResponse}) => {
         } catch (error) {
             console.error("Error submitting form:", error);
         } finally {
-            setDefaultLoading(false)
         }
     };
     const handleStart = async () => {
@@ -115,7 +109,6 @@ const Start = ({data, setResponse}) => {
     };
 
     const handleStartForNo = async () => {
-        setDefaultLoading(true)
         try {
             const formData = new FormData();
             formData.append('uniq', uniquecode);
@@ -127,7 +120,6 @@ const Start = ({data, setResponse}) => {
         } catch (error) {
             console.error("Error submitting form:", error);
         } finally {
-            setDefaultLoading(false)
         }
     };
     const dlcs = dlc ? dlc.split(',') : [];
