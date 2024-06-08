@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useTimer} from 'react-timer-hook';
 import {useTranslation} from "react-i18next";
 import httpService from "../../services/httpSevice";
@@ -7,6 +7,9 @@ import FindDelivery from "../FindDelivery";
 import Input from "../Inputs/Input";
 import Button from "../Button";
 import useForm from "../../hooks/useForm";
+import moment from 'moment-timezone';
+import {logDOM} from "@testing-library/react";
+import Countdown from "react-countdown-now";
 
 const initialData = {
     link: "",
@@ -123,16 +126,31 @@ const Start = ({data, setResponse}) => {
         }
     };
     const dlcs = dlc ? dlc.split(',') : [];
-    const now = new Date();
-    const moscowTime = new Date(now.toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' }));
-    const moment = require('moment-timezone');
-    const serverTimestamp = moment(date).valueOf();
-    const timeDifference = serverTimestamp - moscowTime.getTime();
-    const expiryTimestamp = moscowTime.getTime() + timeDifference + (3 * 60 * 1000);
-    const { seconds, minutes } = useTimer({
-        expiryTimestamp,
-        onExpire: () => handleStart()
-    });
+
+    const [timeDifference, setTimeDifference] = useState(null);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const modifiedServerTime = moment(date).add(3, 'minutes');
+            const moscowTime = moment().tz("Europe/Moscow");
+            const differenceInMilliseconds = modifiedServerTime.diff(moscowTime);
+
+            const duration = moment.duration(differenceInMilliseconds);
+            const minutes = duration.minutes();
+            const seconds = duration.seconds();
+
+            setTimeDifference(t('start.minutes_seconds', { minutes, seconds }));
+
+            if (minutes === 0 && seconds === 0) {
+                clearInterval(interval);
+                handleStart()
+            }
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+
 
     const {
         form,
@@ -243,7 +261,6 @@ const Start = ({data, setResponse}) => {
                         console.log(r, "r")
                         setIsSuccessEndBuy(r.data.content)
                         setIsLoading(false);
-                        console.log(isSuccessEndBuy, "log")
                         if (isSuccessEndBuy === "good") {
                             window.location.href = "/finish"
                         }
@@ -355,7 +372,7 @@ const Start = ({data, setResponse}) => {
                             {t('start.delivery_starts_in')}
                         </div>
                         <div className="mt-4 text-2xl  text-white">
-                            <p>{t('start.minutes_seconds', {minutes, seconds})}</p>
+                            {timeDifference}
                         </div>
                     </div>
                 </div>
@@ -396,3 +413,4 @@ const Start = ({data, setResponse}) => {
 };
 
 export default Start;
+
