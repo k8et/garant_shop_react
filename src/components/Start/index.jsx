@@ -1,5 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {useTimer} from 'react-timer-hook';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from "react-i18next";
 import httpService from "../../services/httpSevice";
 import Error from "../Error";
@@ -8,8 +7,6 @@ import Input from "../Inputs/Input";
 import Button from "../Button";
 import useForm from "../../hooks/useForm";
 import moment from 'moment-timezone';
-import {logDOM} from "@testing-library/react";
-import Countdown from "react-countdown-now";
 
 const initialData = {
     link: "",
@@ -131,15 +128,16 @@ const Start = ({data, setResponse}) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const modifiedServerTime = moment(date).add(3, 'minutes');
-            const moscowTime = moment().tz("Europe/Moscow");
-            const differenceInMilliseconds = modifiedServerTime.diff(moscowTime);
+            const modifiedServerTime = moment(date).add(3, 'minutes').valueOf();
+            const currentTimeString = new Date().toLocaleTimeString('ru-RU', {timeZone: 'Europe/Moscow'});
+            const currentTimeMillis = Date.parse(`01 Jan 1970 ${currentTimeString} GMT`);
+            const differenceInMilliseconds = modifiedServerTime - currentTimeMillis;
 
             const duration = moment.duration(differenceInMilliseconds);
             const minutes = duration.minutes();
             const seconds = duration.seconds();
 
-            setTimeDifference(t('start.minutes_seconds', { minutes, seconds }));
+            setTimeDifference(t('start.minutes_seconds', {minutes, seconds}));
 
             if (minutes === 0 && seconds === 0) {
                 clearInterval(interval);
@@ -149,7 +147,6 @@ const Start = ({data, setResponse}) => {
 
         return () => clearInterval(interval);
     }, []);
-
 
 
     const {
