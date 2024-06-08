@@ -19,6 +19,7 @@ export default function Home() {
     const uniqueCode = params.get("uniquecode");
 
     const changeUrl = async () => {
+
         setIsLoading(true)
         const url = `?uniquecode=${uniqueCode}`;
         try {
@@ -52,9 +53,11 @@ export default function Home() {
             console.log("asd");
             changeUrl();
         } else {
+            setDefaultLoading(true)
             httpService.get("/")
                 .then(r => {
                     setResponseDefault(r.data.content)
+                    setDefaultLoading(false)
                     console.log(response, "response")
                 });
         }
