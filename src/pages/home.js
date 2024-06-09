@@ -8,7 +8,7 @@ import Start from "../components/Start";
 
 
 export default function Home() {
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
     const [response, setResponse] = useState('');
     const [responseDefault, setResponseDefault] = useState('');
     const [responseInvite, setResponseInvite] = useState('');
@@ -139,31 +139,30 @@ export default function Home() {
     }
 
     if (isLoading) {
-        return <FindDelivery title={t("find_delivery_title")}/>
+        return <FindDelivery title={t("find_delivery_title")}/>;
     }
     if (response?.status === "not_need_client") {
-        return <FindDelivery title={"Доставка"} text={"Продолжаю доставку..."}/>
+        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
     if (response === "no") {
-        return <FindDelivery title={"Доставка"} text={"Наш курьер скоро вам отправит заявку в друзья"}/>
+        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Наш курьер скоро вам отправит заявку в друзья" : "Our courier will soon send you a friend request"}/>;
     }
     if (response === "wait") {
-        return <FindDelivery title={t("find_delivery_title")}/>
+        return <FindDelivery title={t("find_delivery_title")}/>;
     }
     if (response?.status === "wait_client") {
-        return <FindDelivery response={response} client title={"Доставка"}
-                             text={"Примите заявку в друзья!"}/>
+        return <FindDelivery response={response} client title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Примите заявку в друзья!" : "Accept the friend request!"}/>;
     }
     if (responseInvite === "invite_false") {
-        return <FindDelivery response={response} client title={"Доставка"}
-                             text={"Примите заявку в друзья!"}/>
+        return <FindDelivery response={response} client title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Примите заявку в друзья!" : "Accept the friend request!"}/>;
     }
     if (response?.status === "done_client") {
-        return <FindDelivery title={"Доставка"} text={"Продолжаю доставку..."}/>
+        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
     if (responseInvite === "invite_true") {
-        return <FindDelivery title={"Доставка"} text={"Продолжаю доставку..."}/>
+        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
+
     return (
         <main className="flex max-h-full w-full flex-col bg-[#1C1C1C] items-center p-11 max-2xl:p-3 justify-center">
             {response?.status === "uniq_no" &&

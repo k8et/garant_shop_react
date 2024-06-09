@@ -286,50 +286,79 @@ const Start = ({data, setResponse}) => {
     if (isSuccessEndBuy === "error_92") return <Error title={t('error.contactManagerRequired')}
                                                       text={t('error.manualDelivery')}/>;
 
-    if (isLoading) return <FindDelivery title={"Доставка"} text={"Продолжаю доставку..."}/>;
+    if (isLoading) return (
+        <FindDelivery
+            title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+            text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}
+        />
+    );
+
     if (isSuccessStart === "no") {
-        return <FindDelivery title={"Доставка"} text={"Наш курьер скоро вам отправит заявку в друзья"}/>
-    }
-    if (isSuccessStart?.status === "wait_client") {
-        return <FindDelivery response={isSuccessStart} client title={t("find_delivery_title")}
-                             text={"Примите заявку в друзья!"}/>
-    }
-    if (isSuccessEndBuy === "no") {
-        return <FindDelivery title={"Доставка"} text={"Продолжаю доставку..."}/>
-    }
-    if (responseInvite === "invite_true") {
-        return <FindDelivery title={"Доставка"} text={"Продолжаю доставку..."}/>
+        return (
+            <FindDelivery
+                title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+                text={i18n.language === "ru" ? "Наш курьер скоро вам отправит заявку в друзья" : "Our courier will soon send you a friend request"}
+            />
+        );
     }
 
+    if (isSuccessStart?.status !== "wait_client") {
+        return (
+            <FindDelivery
+                response={isSuccessStart}
+                client
+                title={i18n.language === "ru" ? "Заявка отправлена" : "Request sent"}
+                text={i18n.language === "ru" ? "Примите заявку в друзья!" : "Accept the friend request!"}
+            />
+        );
+    }
+
+    if (isSuccessEndBuy === "no") {
+        return (
+            <FindDelivery
+                title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+                text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}
+            />
+        );
+    }
+
+    if (responseInvite === "invite_true") {
+        return (
+            <FindDelivery
+                title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+                text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}
+            />
+        );
+    }
     return (
         <main className="flex h-full w-full flex-col bg-[#1C1C1C]  items-center  justify-center">
             <section
-                className="flex flex-col justify-center p-11 w-[1500px] bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10  max-2xl:px-5 max-2xl:w-full">
+                className="flex flex-col justify-center p-6 w-[1400px] bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10  max-2xl:px-5 max-2xl:w-[768px] max-md:w-full ">
                 <div className="max-2xl:max-w-full">
                     <div className="flex gap-5 max-2xl:flex-col max-2xl:gap-0">
                         <div className="flex flex-col w-[69%] max-2xl:ml-0 max-2xl:w-full">
                             <img loading="lazy" src={image} alt="Game Screenshot"
-                                 className="grow w-full aspect-[2.13] max-2xl:mt-10 max-2xl:max-w-full"/>
+                                 className="grow w-full max-2xl:mt-10 max-2xl:max-w-full"/>
                         </div>
-                        <div className="flex flex-col ml-5 w-[31%] max-2xl:ml-0 max-2xl:w-full">
-                            <article className="flex flex-col grow pr-10 text-2xl leading-8 text-white max-2xl:mt-10">
-                                <header className="text-3xl font-semibold leading-10">{name_main}</header>
+                        <div className="flex flex-col ml-5 w-[38%] max-2xl:ml-0 max-2xl:w-full">
+                            <article className="flex flex-col grow pr-10 text-xl leading-6 text-white max-2xl:mt-10">
+                                <header className="text-3xl font-semibold leading-6">{name_main}</header>
                                 {name_game?.length > 0 &&
                                     <div>
                                         <div
-                                            className="self-start mt-7 text-2xl  text-zinc-400">{t('start.edition')}</div>
-                                        <div className="self-start mt-4 ">{name_game}</div>
+                                            className="self-start mt-7 text-xl  text-zinc-400">{t('start.edition')}</div>
+                                        <div className="self-start mt-2 ">{name_game}</div>
                                     </div>
                                 }
-                                <div className="mt-10 text-2xl  text-zinc-400">{t('start.region')}</div>
-                                <div className="mt-4">{i18n.language === "ru" ? region_ru : region_en}</div>
+                                <div className="mt-4 text-xl  text-zinc-400">{t('start.region')}</div>
+                                <div className="mt-2">{i18n.language === "ru" ? region_ru : region_en}</div>
                                 {dlcs?.length > 0 && (
                                     <>
-                                        <div className="mt-10 text-2xl  text-zinc-400">{t('start.selected_dlc')}</div>
+                                        <div className="mt-4 text-xl  text-zinc-400">{t('start.selected_dlc')}</div>
                                         {dlcs.map((dlc, index) => (
                                             <>
                                                 <div
-                                                    className="shrink-0 mt-5 h-px bg-zinc-400 bg-opacity-30 rounded-[32px]"/>
+                                                    className="shrink-0 mt-2 h-px bg-zinc-400 bg-opacity-30 rounded-[32px]"/>
                                                 <div className="mt-5">{dlc}</div>
                                             </>
                                         ))}
@@ -337,9 +366,9 @@ const Start = ({data, setResponse}) => {
                                 )}
                                 {dlcs?.length === 0 && (
                                     <>
-                                        <div className="mt-10 text-2xl  text-zinc-400">{t('start.description')}</div>
+                                        <div className="mt-4 text-xl  text-zinc-400">{t('start.description')}</div>
                                         <div
-                                            className="mt-4">{i18n.language === "ru" ? about_game_ru : about_game_en}</div>
+                                            className="mt-2 leading-7">{i18n.language === "ru" ? about_game_ru : about_game_en}</div>
                                     </>
                                 )}
                             </article>
@@ -349,26 +378,26 @@ const Start = ({data, setResponse}) => {
             </section>
 
             <section
-                className="flex flex-col w-[1500px] justify-center p-8 mt-11 bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10 max-2xl:px-5 max-2xl:mt-10 max-2xl:w-full">
+                className="flex flex-col w-[1400px] justify-center p-4 mt-[26px] bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10 max-2xl:px-5 max-2xl:mt-10 max-2xl:w-[768px] max-md:w-full">
                 <div className="flex gap-5 justify-between w-full max-2xl:flex-wrap max-2xl:max-w-full">
                     <div className="flex gap-5 justify-between whitespace-nowrap leading-[130%] max-2xl:flex-wrap">
                         <img loading="lazy" src={image_bot} alt="Profile of GARANTSHOP_RU2"
                              className="shrink-0 aspect-square w-[76px]"/>
                         <div className="flex flex-col my-auto max-2xl:max-w-full">
-                            <div className="text-2xl font-medium text-white max-2xl:max-w-full">
+                            <div className="text-xl font-medium text-white max-2xl:max-w-full">
                                 {nickname_bot}
                             </div>
                             <a href={profile_client} target="_blank" rel="noopener noreferrer"
-                               className="mt-4 text-2xl text-blue-500 max-xl:max-w-full break-words whitespace-normal break-all">
+                               className="mt-4 text-xl text-blue-500 max-xl:max-w-full break-words whitespace-normal break-all">
                                 {profile_client}
                             </a>
                         </div>
                     </div>
                     <div className="flex flex-col my-auto">
-                        <div className="text-2xl  text-zinc-400">
+                        <div className="text-xl  text-zinc-400">
                             {t('start.delivery_starts_in')}
                         </div>
-                        <div className="mt-4 text-2xl  text-white">
+                        <div className="mt-4 text-xl  text-white">
                             {timeDifference}
                         </div>
                     </div>
@@ -376,30 +405,30 @@ const Start = ({data, setResponse}) => {
             </section>
 
             <section
-                className="flex gap-5 w-[1500px] justify-between rounded-3xl mt-[36px] max-2xl:w-full max-2xl:flex-wrap max-xl:flex-col">
+                className="flex gap-5 w-[1400px] justify-between rounded-3xl mt-[26px] max-2xl:w-[768px] max-2xl:flex-wrap max-xl:flex-col max-md:w-full">
                 <article className="flex flex-col max-2xl:pl-5 max-2xl:max-w-full">
-                    <p className="text-2xl  text-zinc-400 max-2xl:max-w-full">
+                    <p className="text-xl  text-zinc-400 max-2xl:max-w-full">
                         {t('start.not_your_profile')}
                     </p>
-                    <div className="flex gap-4 mt-4 items-center text-2xl leading-8 max-2xl:flex-wrap">
-                        <Input name={"link"} onChange={handlerChange} value={form.link}
+                    <div className="flex gap-4 mt-4 items-center text-xl leading-8 max-2xl:flex-wrap">
+                        <Input placeholder={"Новая ссылка на профиль"} name={"link"} onChange={handlerChange} value={form.link}
                                className={"!w-[600px] max-md:!w-full"}/>
                         <Button onClick={handlerSubmit}>{t('start.update')}</Button>
                     </div>
                 </article>
                 <article className="flex flex-col px-5">
-                    <p className="text-2xl  text-zinc-400">
+                    <p className="text-xl  text-zinc-400">
                         {t('start.skip_timer')}
                     </p>
-                    <div className="flex gap-4 mt-4 items-center text-2xl leading-8 max-2xl:flex-wrap">
+                    <div className="flex gap-4 mt-4 items-center text-xl leading-8 max-2xl:flex-wrap">
                         <Button onClick={handleStart}>{t('start.deliver_now')}</Button>
                     </div>
                 </article>
                 <article className="flex flex-col px-5">
-                    <p className="text-2xl  text-zinc-400">
+                    <p className="text-xl  text-zinc-400">
                         {t('start.changed_mind')}
                     </p>
-                    <div className="flex gap-4 mt-4 items-center text-2xl leading-8 max-2xl:flex-wrap">
+                    <div className="flex gap-4 mt-4 items-center text-xl leading-8 max-2xl:flex-wrap">
                         <Button onClick={handleCancel} red>{t('start.cancel_delivery')}</Button>
                     </div>
                 </article>

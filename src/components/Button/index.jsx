@@ -1,17 +1,18 @@
-import {Link} from "react-router-dom";
+import React from "react";
 
 const Button = ({ children, className, href, red, ...rest }) => {
-    const baseClass = `justify-center items-center flex px-3.5 h-[50px] text-2xl max-md:text-xl font-medium text-center text-violet-50 rounded-xl shadow-sm ${className}`;
+    const baseClass = `justify-center items-center flex px-3.5 h-[50px] text-xl max-md:text-xl font-medium text-center text-violet-50 rounded-xl shadow-sm ${className}`;
     const gradientClass = red ? 'bg-red-gradient' : 'bg-blue-gradient';
 
     return href ? (
-        <Link
-            to={href}
+        <a
+            target={"_blank"}
+            href={href}
             className={`${baseClass} ${gradientClass}`}
             {...rest}
         >
             {children}
-        </Link>
+        </a>
     ) : (
         <button
             className={`${baseClass} ${gradientClass}`}
