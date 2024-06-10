@@ -302,7 +302,7 @@ const Start = ({data, setResponse}) => {
         );
     }
 
-    if (isSuccessStart?.status !== "wait_client") {
+    if (isSuccessStart?.status === "wait_client") {
         return (
             <FindDelivery
                 response={isSuccessStart}
