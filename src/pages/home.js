@@ -214,13 +214,13 @@ export default function Home() {
             {response?.status === "error_35" &&
                 <div>
                     <Error title={t('error.contactManagerRequired')}
-                           text={i18n.language === "ru" ? "Доставка будет проходить в ручном режиме, свяжитесь с менеджером"  : "Friend request not accepted, contact the manager!"}/>;
+                           text={i18n.language === "ru" ? "Доставка будет проходить в ручном режиме, свяжитесь с менеджером"  : "Friend request not accepted, contact the manager!"}/>
                 </div>
             }
             {response?.status === "error_98" &&
                 <div>
                     <Error title={t('error.contactManagerRequired')}
-                           text={i18n.language === "ru" ? "Вы не приняли заявку, доставка будет проходить в ручном режиме. Свяжитесь с менеджером!"  : "You have not accepted the application, delivery will take place manually. Contact the manager!"}/>;
+                           text={i18n.language === "ru" ? "Вы не приняли заявку, доставка будет проходить в ручном режиме. Свяжитесь с менеджером!"  : "You have not accepted the application, delivery will take place manually. Contact the manager!"}/>
                 </div>
             }
             {response?.status === "default" &&

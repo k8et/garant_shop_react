@@ -286,6 +286,10 @@ const Start = ({data, setResponse}) => {
     if (isSuccessEndBuy === "error_92") return <Error title={t('error.contactManagerRequired')}
                                                       text={t('error.manualDelivery')}/>;
 
+    if (responseInvite === "error_98") return <Error
+        title={i18n.language === "ru" ? "Требуется связаться с менеджером!" : "Need to contact the manager!"}
+        text={i18n.language === "ru" ? "Заявка в друзья не принята, свяжитесь с менеджером!" : "Friend request not accepted, contact the manager!"}/>;
+
     if (isSuccessStart === "error_98") return <Error
         title={i18n.language === "ru" ? "Требуется связаться с менеджером!" : "Need to contact the manager!"}
         text={i18n.language === "ru" ? "Заявка в друзья не принята, свяжитесь с менеджером!" : "Friend request not accepted, contact the manager!"}/>;
