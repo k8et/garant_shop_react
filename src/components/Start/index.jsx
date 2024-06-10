@@ -286,6 +286,13 @@ const Start = ({data, setResponse}) => {
     if (isSuccessEndBuy === "error_92") return <Error title={t('error.contactManagerRequired')}
                                                       text={t('error.manualDelivery')}/>;
 
+    if (isSuccessStart === "error_98") return <Error
+        title={i18n.language === "ru" ? "Требуется связаться с менеджером!" : "Need to contact the manager!"}
+        text={i18n.language === "ru" ? "Заявка в друзья не принята, свяжитесь с менеджером!" : "Friend request not accepted, contact the manager!"}/>;
+
+    if (isSuccessStart === "error_35") return <Error title={t('error.contactManagerRequired')}
+                                                     text={i18n.language === "ru" ? "Доставка будет проходить в ручном режиме, свяжитесь с менеджером"  : "Friend request not accepted, contact the manager!"}/>;
+
     if (isLoading) return (
         <FindDelivery
             title={i18n.language === "ru" ? "Доставка" : "Delivery"}
@@ -411,7 +418,8 @@ const Start = ({data, setResponse}) => {
                         {t('start.not_your_profile')}
                     </p>
                     <div className="flex gap-4 mt-4 items-center text-xl leading-8 max-2xl:flex-wrap">
-                        <Input placeholder={"Новая ссылка на профиль"} name={"link"} onChange={handlerChange} value={form.link}
+                        <Input placeholder={"Новая ссылка на профиль"} name={"link"} onChange={handlerChange}
+                               value={form.link}
                                className={"!w-[600px] max-md:!w-full"}/>
                         <Button onClick={handlerSubmit}>{t('start.update')}</Button>
                     </div>

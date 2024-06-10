@@ -142,25 +142,31 @@ export default function Home() {
         return <FindDelivery title={t("find_delivery_title")}/>;
     }
     if (response?.status === "not_need_client") {
-        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
+        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+                             text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
     if (response === "no") {
-        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Наш курьер скоро вам отправит заявку в друзья" : "Our courier will soon send you a friend request"}/>;
+        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+                             text={i18n.language === "ru" ? "Наш курьер скоро вам отправит заявку в друзья" : "Our courier will soon send you a friend request"}/>;
     }
     if (response === "wait") {
         return <FindDelivery title={t("find_delivery_title")}/>;
     }
     if (response?.status === "wait_client") {
-        return <FindDelivery response={response} client title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Примите заявку в друзья!" : "Accept the friend request!"}/>;
+        return <FindDelivery response={response} client title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+                             text={i18n.language === "ru" ? "Примите заявку в друзья!" : "Accept the friend request!"}/>;
     }
     if (responseInvite === "invite_false") {
-        return <FindDelivery response={response} client title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Примите заявку в друзья!" : "Accept the friend request!"}/>;
+        return <FindDelivery response={response} client title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+                             text={i18n.language === "ru" ? "Примите заявку в друзья!" : "Accept the friend request!"}/>;
     }
     if (response?.status === "done_client") {
-        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
+        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+                             text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
     if (responseInvite === "invite_true") {
-        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"} text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
+        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+                             text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
 
     return (
@@ -192,6 +198,13 @@ export default function Home() {
                            text={t('error.manualDelivery')}/>
                 </div>
             }
+            {response?.status === "error_92" &&
+                <div>
+                    <Error
+                        title={i18n.language === "ru" ? "Требуется связаться с менеджером!" : "Need to contact the manager!"}
+                        text={i18n.language === "ru" ? "Заявка в друзья не принята, свяжитесь с менеджером!" : "Friend request not accepted, contact the manager!"}/>
+                </div>
+            }
             {response?.status === "error_53" &&
                 <div>
                     <Error title={t('error.contactManagerRequired')}
@@ -201,13 +214,13 @@ export default function Home() {
             {response?.status === "error_35" &&
                 <div>
                     <Error title={t('error.contactManagerRequired')}
-                           text={"Доставка будет проходить в ручном режиме, свяжитесь с менеджером"}/>
+                           text={i18n.language === "ru" ? "Доставка будет проходить в ручном режиме, свяжитесь с менеджером"  : "Friend request not accepted, contact the manager!"}/>;
                 </div>
             }
             {response?.status === "error_98" &&
                 <div>
                     <Error title={t('error.contactManagerRequired')}
-                           text={"Вы не приняли заявку, доставка будет проходить в ручном режиме. Свяжитесь с менеджером!"}/>
+                           text={i18n.language === "ru" ? "Вы не приняли заявку, доставка будет проходить в ручном режиме. Свяжитесь с менеджером!"  : "You have not accepted the application, delivery will take place manually. Contact the manager!"}/>;
                 </div>
             }
             {response?.status === "default" &&
