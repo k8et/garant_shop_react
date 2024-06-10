@@ -295,7 +295,7 @@ const Start = ({data, setResponse}) => {
         text={i18n.language === "ru" ? "Заявка в друзья не принята, свяжитесь с менеджером!" : "Friend request not accepted, contact the manager!"}/>;
 
     if (isSuccessStart === "error_35") return <Error title={t('error.contactManagerRequired')}
-                                                     text={i18n.language === "ru" ? "Доставка будет проходить в ручном режиме, свяжитесь с менеджером"  : "Friend request not accepted, contact the manager!"}/>;
+                                                     text={i18n.language === "ru" ? "Доставка будет проходить в ручном режиме, свяжитесь с менеджером" : "Friend request not accepted, contact the manager!"}/>;
 
     if (isLoading) return (
         <FindDelivery
@@ -342,9 +342,10 @@ const Start = ({data, setResponse}) => {
         );
     }
     return (
-        <main className="flex  w-full flex-col bg-[#1C1C1C]  items-center  justify-center">
+        <main
+            className="flex  w-full flex-col bg-[#1C1C1C] px-[10%] max-lg:p-3  items-center  justify-center">
             <section
-                className="flex flex-col justify-center p-6 w-[1400px] bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10  max-2xl:px-5 max-2xl:w-[768px] max-md:w-full ">
+                className="flex flex-col justify-center p-6 w-[1200px] bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10  max-2xl:px-5 max-2xl:w-[768px] max-md:w-full ">
                 <div className="max-2xl:max-w-full">
                     <div className="flex gap-5 max-2xl:flex-col max-2xl:gap-0">
                         <div className="flex flex-col w-[69%] max-2xl:ml-0 max-2xl:w-full">
@@ -389,7 +390,7 @@ const Start = ({data, setResponse}) => {
             </section>
 
             <section
-                className="flex flex-col w-[1400px] justify-center p-4 mt-[26px] bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10 max-2xl:px-5 max-2xl:mt-10 max-2xl:w-[768px] max-md:w-full">
+                className="flex flex-col w-[1200px] justify-center p-4 mt-[26px] bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10 max-2xl:px-5 max-2xl:mt-10 max-2xl:w-[768px] max-md:w-full">
                 <div className="flex gap-5 justify-between w-full max-2xl:flex-wrap max-2xl:max-w-full">
                     <div className="flex gap-5 justify-between whitespace-nowrap leading-[130%] max-2xl:flex-wrap">
                         <img loading="lazy" src={image_bot} alt="Profile of GARANTSHOP_RU2"
@@ -416,34 +417,37 @@ const Start = ({data, setResponse}) => {
             </section>
 
             <section
-                className="flex gap-5 w-[1400px] justify-between rounded-3xl mt-[26px] max-2xl:w-[768px] max-2xl:flex-wrap max-xl:flex-col max-md:w-full">
-                <article className="flex flex-col max-2xl:pl-5 max-2xl:max-w-full">
+                className="flex gap-5 w-[1200px] justify-between rounded-3xl mt-[26px] max-2xl:w-[768px] max-2xl:flex-col max-xl:flex-col max-md:w-full">
+                <article className="flex flex-col max-2xl:pl-0 max-2xl:max-w-full">
                     <p className="text-xl  text-zinc-400 max-2xl:max-w-full">
                         {t('start.not_your_profile')}
                     </p>
-                    <div className="flex gap-4 mt-4 items-center text-xl leading-8 max-2xl:flex-wrap">
+                    <div className="flex gap-[25px] mt-4 items-center  text-xl leading-8 max-2xl:flex-wrap">
                         <Input placeholder={"Новая ссылка на профиль"} name={"link"} onChange={handlerChange}
                                value={form.link}
-                               className={"!w-[600px] max-md:!w-full"}/>
+                               className={"!w-[570px] max-md:!w-full"}/>
                         <Button onClick={handlerSubmit}>{t('start.update')}</Button>
                     </div>
                 </article>
-                <article className="flex flex-col px-5">
-                    <p className="text-xl  text-zinc-400">
-                        {t('start.skip_timer')}
-                    </p>
-                    <div className="flex gap-4 mt-4 items-center text-xl leading-8 max-2xl:flex-wrap">
-                        <Button onClick={handleStart}>{t('start.deliver_now')}</Button>
-                    </div>
-                </article>
-                <article className="flex flex-col px-5">
-                    <p className="text-xl  text-zinc-400">
-                        {t('start.changed_mind')}
-                    </p>
-                    <div className="flex gap-4 mt-4 items-center text-xl leading-8 max-2xl:flex-wrap">
-                        <Button onClick={handleCancel} red>{t('start.cancel_delivery')}</Button>
-                    </div>
-                </article>
+                <div
+                    className={"w-full flex ml-[34px] max-2xl:ml-0 max-2xl:flex-wrap max-2xl:gap-[25px] max-lg:grid-cols-1 justify-between max-2xl:justify-start"}>
+                    <article className="flex flex-col mt-[20px] ">
+                        <p className="text-xl leading-[13px] text-zinc-400">
+                            {t('start.skip_timer')}
+                        </p>
+                        <div className="flex gap-4 mt-4 items-center text-xl leading-8 max-2xl:flex-wrap">
+                            <Button onClick={handleStart}>{t('start.deliver_now')}</Button>
+                        </div>
+                    </article>
+                    <article className="flex flex-col mt-[20px] ">
+                        <p className="text-xl leading-[13px] text-zinc-400">
+                            {t('start.changed_mind')}
+                        </p>
+                        <div className="flex gap-4 mt-4 items-center text-xl leading-8 max-2xl:flex-wrap">
+                            <Button onClick={handleCancel} red>{t('start.cancel_delivery')}</Button>
+                        </div>
+                    </article>
+                </div>
             </section>
         </main>
 
