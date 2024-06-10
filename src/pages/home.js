@@ -170,7 +170,7 @@ export default function Home() {
     }
 
     return (
-        <main className="flex max-h-full w-full flex-col bg-[#1C1C1C] items-center p-11 max-2xl:p-3 justify-center">
+        <main className="flex max-h-full w-full flex-col bg-[#1C1C1C] items-center p-3 max-2xl:p-3 justify-center">
             {response?.status === "uniq_no" &&
                 <div>
                     <Error status={response?.status} text={t("error_text_uniq_no")}/>

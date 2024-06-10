@@ -338,7 +338,7 @@ const Start = ({data, setResponse}) => {
         );
     }
     return (
-        <main className="flex h-full w-full flex-col bg-[#1C1C1C]  items-center  justify-center">
+        <main className="flex  w-full flex-col bg-[#1C1C1C]  items-center  justify-center">
             <section
                 className="flex flex-col justify-center p-6 w-[1400px] bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10  max-2xl:px-5 max-2xl:w-[768px] max-md:w-full ">
                 <div className="max-2xl:max-w-full">

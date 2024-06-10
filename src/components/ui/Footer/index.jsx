@@ -18,7 +18,7 @@ const Footer = () => {
     };
 
     return (
-        <div className="w-full h-[100px] z-[120] flex items-center justify-center">
+        <div className="w-full h-[80px] z-[120] flex items-center justify-center">
             <div className="flex items-center relative justify-center gap-2 ">
                 <a target={"_blank"} href="https://t.me/garantshopinfo" className={"flex gap-2"}>
                     <Icon className="" name="telegram" height={52} width={52}/>

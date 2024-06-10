@@ -21,9 +21,9 @@ const Header = () => {
 
     return (
         <div
-            className="h-[100px] z-30 bg-[#202020]/50 w-full flex border-b border-white/10 items-center justify-center">
+            className="h-[80px] z-30 bg-[#202020]/50 w-full flex border-b border-white/10 items-center justify-center">
             <Link to={"/"}>
-                <h1 className="text-4xl absolute left-[50px] top-[30px] max-md:left-[25px] text-left max-md:top-[33px] max-md:text-2xl font-bold text-white">
+                <h1 className="text-4xl absolute left-[50px] top-[20px] max-md:left-[25px] text-left max-md:top-[33px] max-md:text-2xl font-bold text-white">
                     GARANT SHOP
                 </h1>
             </Link>
