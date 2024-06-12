@@ -21,12 +21,12 @@ export default function Delivery() {
     return (
         <main className="flex h-full w-full flex-col bg-[#1C1C1C] max-md:p-3 items-center max-xl:p-11 justify-center">
             <section
-                className="flex flex-col justify-center p-11 w-[940px] bg-[#929292]/5 max-xl:w-full gap-11 rounded-3xl border border-solid border-white border-opacity-10">
-                <h1 className="text-3xl">
+                className="flex flex-col justify-center p-11 w-[840px] bg-[#929292]/5 max-xl:w-full gap-11 rounded-3xl border border-solid border-white border-opacity-10">
+                <h1 className="text-2xl">
                     {t("bought_game")}
                 </h1>
                 <article className="flex w-full flex-col">
-                    <p className="text-2xl text-zinc-400 max-md:text-xl">
+                    <p className="text-xl text-zinc-400 max-md:text-xl">
                         {t("enter_unique_code")}
                     </p>
                     <div className="mt-4 w-full text-2xl">

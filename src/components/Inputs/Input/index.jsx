@@ -8,7 +8,7 @@ const Input = ({ value, onChange,newChange, error, name, icon, hint, label, plac
       {label && <span className="text-[#ABABB0] text-2xl">{label}</span>}
       <div className="relative py-[0px] w-full flex gap-[8px] items-center">
         <input
-          className={`peer relative h-[50px] placeholder:text-white/30 text-white bg-transparent border border-white/10 rounded-[8px]  px-2  w-full focus:shadow-none ${className} `}
+          className={`peer relative h-[50px] placeholder:text-white/30 text-[18px] text-white bg-transparent border border-white/10 rounded-[8px]  px-2  w-full focus:shadow-none ${className} `}
           type="text"
           value={value}
           onChange={onChange}

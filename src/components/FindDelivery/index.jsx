@@ -36,7 +36,7 @@ const FindDelivery = ({title, text, client, response, simple}) => {
                                  className="shrink-0 aspect-square w-[53px]"/>
                             <div className="my-auto">{response?.second_nickname}</div>
                         </div>
-                        <Button>
+                        <Button className={"!my-auto"}>
                             <a target={"_blank"} href={`https://steamcommunity.com/profiles/${response?.number}/`}>
                                 Открыть
                             </a>
