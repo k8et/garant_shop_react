@@ -34,7 +34,7 @@ export default function Finish() {
                         </a>
                     </div>
                     <a
-                        className={`justify-center !bg-[#4F4F4F] items-center flex px-2 h-[50px] text-[18px] whitespace-nowrap max-md:text-[18px] font-medium text-center text-violet-50 rounded-xl shadow-sm`}
+                        className={`justify-center !bg-[#A9A9A9] items-center flex px-2 h-[50px] text-[18px] whitespace-nowrap max-md:text-[18px] font-medium text-center text-violet-50 rounded-xl shadow-sm`}
                         target={"_blank"}
                         href={"https://oplata.info/"}
                     >
