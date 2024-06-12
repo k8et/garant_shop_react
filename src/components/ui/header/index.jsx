@@ -28,7 +28,7 @@ const Header = () => {
                 </h1>
             </Link>
             <div className={"flex text-[#A9ABAD] text-xl gap-10 max-xl:hidden"}>
-                <Link to={""}>{t('header.balance')}</Link>
+                {/*<Link to={""}>{t('header.balance')}</Link>*/}
                 <Link className={`${location.pathname === "/delivery" && "!text-white"}`}
                       to={"/delivery"}>{t('header.find_delivery')}</Link>
             </div>
