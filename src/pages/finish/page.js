@@ -12,7 +12,7 @@ export default function Finish() {
                     <h1 className={"text-3xl text-center"}>
                         {t('home.delivery_completed')}
                     </h1>
-                    <p className="text-[18px] text-center text-zinc-400 ">
+                    <p className="text-[20px] text-center text-zinc-400 ">
                         {t('home.enjoy_game_leave_review')}
                     </p>
                 </div>
