@@ -36,7 +36,7 @@ export default function Finish() {
                     <a
                         className={`justify-center !bg-[#4F4F4F] items-center flex px-2 h-[50px] text-[18px] whitespace-nowrap max-md:text-[18px] font-medium text-center text-violet-50 rounded-xl shadow-sm`}
                         target={"_blank"}
-                        href={"https://oplata.info/"}
+                        href={"https://dub.sh/HowToReview"}
                     >
                         {i18n.language === "ru" ? "Как оставить отзыв?" : "How leave feedback?"}
                     </a>

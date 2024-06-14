@@ -349,7 +349,7 @@ const Start = ({data, setResponse}) => {
                 <div className="max-2xl:max-w-full">
                     <div className="flex gap-5 max-2xl:flex-col max-2xl:gap-0">
                         <div className="flex flex-col w-[69%] max-2xl:ml-0 max-2xl:w-full">
-                            <img loading="lazy" src={image} alt="Game Screenshot"
+                            <img  src={image} alt="Game Screenshot"
                                  className="grow w-full max-2xl:mt-10 max-2xl:max-w-full"/>
                         </div>
                         <div className="flex flex-col ml-5 w-[38%] max-2xl:ml-0 max-2xl:w-full">
@@ -393,7 +393,7 @@ const Start = ({data, setResponse}) => {
                 className="flex flex-col w-[1200px] justify-center p-4 mt-[26px] bg-[#929292]/5 rounded-3xl border border-solid border-white border-opacity-10 max-2xl:px-5 max-2xl:mt-10 max-2xl:w-[768px] max-md:w-full">
                 <div className="flex gap-5 justify-between w-full max-2xl:flex-wrap max-2xl:max-w-full">
                     <div className="flex gap-5 justify-between whitespace-nowrap leading-[130%] max-2xl:flex-wrap">
-                        <img loading="lazy" src={image_bot} alt="Profile of GARANTSHOP_RU2"
+                        <img  src={image_bot} alt="Profile of GARANTSHOP_RU2"
                              className="shrink-0 aspect-square w-[76px]"/>
                         <div className="flex flex-col my-auto max-2xl:max-w-full">
                             <div className="text-xl font-medium text-white max-2xl:max-w-full">

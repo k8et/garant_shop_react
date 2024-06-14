@@ -32,7 +32,7 @@ const FindDelivery = ({title, text, client, response, simple}) => {
                     <div
                         className="flex gap-5 justify-between p-2 text-xl font-medium leading-8 whitespace-nowrap rounded-2xl border border-solid border-white border-opacity-10 w-[498px] max-sm:!max-w-full">
                         <div className="flex gap-5 justify-between text-white">
-                            <img loading="lazy" src={response?.second_image} alt={"imgAlt"}
+                            <img  src={response?.second_image} alt={"imgAlt"}
                                  className="shrink-0 aspect-square w-[53px]"/>
                             <div className="my-auto">{response?.second_nickname}</div>
                         </div>
