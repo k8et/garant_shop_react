@@ -4,10 +4,16 @@ import Header from "./components/ui/header";
 import Footer from "./components/ui/Footer";
 import Delivery from "./pages/delivery/page";
 import Finish from "./pages/finish/page";
+import {Helmet} from "react-helmet";
 
 function App() {
     return (
         <div className={"app"}>
+            <Helmet>
+                <title>Garant Shop</title>
+                <meta name="description" content="Garant Shop" />
+                <link rel="icon" href="/public/favicon.svg" />
+            </Helmet>
             <Header/>
             <Routes>
                 <Route path={"/"} element={<Home/>}/>
