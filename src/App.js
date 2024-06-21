@@ -12,7 +12,7 @@ function App() {
             <Helmet>
                 <title>Garant Shop</title>
                 <meta name="description" content="Garant Shop" />
-                <link rel="icon" href="/public/favicon.svg" />
+                <link rel="icon" href="/favicon.svg" />
             </Helmet>
             <Header/>
             <Routes>
