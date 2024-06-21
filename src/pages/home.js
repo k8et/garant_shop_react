@@ -142,7 +142,7 @@ export default function Home() {
         return <FindDelivery title={t("find_delivery_title")}/>;
     }
     if (response?.status === "not_need_client") {
-        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+        return <FindDelivery className={"z-[120]"} title={i18n.language === "ru" ? "Доставка" : "Delivery"}
                              text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
     if (response === "no") {
