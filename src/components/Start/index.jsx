@@ -302,6 +302,7 @@ const Start = ({data, setResponse}) => {
 
     if (isLoading) return (
         <FindDelivery
+            className={"!z-[120]"}
             title={i18n.language === "ru" ? "Доставка" : "Delivery"}
             text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}
         />
@@ -330,6 +331,7 @@ const Start = ({data, setResponse}) => {
     if (isSuccessEndBuy === "no") {
         return (
             <FindDelivery
+                className={"!z-[120]"}
                 title={i18n.language === "ru" ? "Доставка" : "Delivery"}
                 text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}
             />
@@ -340,6 +342,7 @@ const Start = ({data, setResponse}) => {
     if (responseInvite === "invite_true") {
         return (
             <FindDelivery
+                className={"!z-[120]"}
                 title={i18n.language === "ru" ? "Доставка" : "Delivery"}
                 text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}
             />

@@ -17,7 +17,6 @@ export default function Home() {
     const currentUrl = new URL(window.location.href);
     const params = new URLSearchParams(currentUrl.search);
     const uniqueCode = params.get("uniquecode");
-
     const changeUrl = async () => {
 
         setIsLoading(true)
@@ -142,7 +141,7 @@ export default function Home() {
         return <FindDelivery title={t("find_delivery_title")}/>;
     }
     if (response?.status === "not_need_client") {
-        return <FindDelivery className={"z-[120]"} title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+        return <FindDelivery className={"!z-[120]"} title={i18n.language === "ru" ? "Доставка" : "Delivery"}
                              text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
     if (response === "no") {
@@ -161,11 +160,11 @@ export default function Home() {
                              text={i18n.language === "ru" ? "Примите заявку в друзья!" : "Accept the friend request!"}/>;
     }
     if (response?.status === "done_client") {
-        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+        return <FindDelivery className={"!z-[120]"} title={i18n.language === "ru" ? "Доставка" : "Delivery"}
                              text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
     if (responseInvite === "invite_true") {
-        return <FindDelivery title={i18n.language === "ru" ? "Доставка" : "Delivery"}
+        return <FindDelivery className={"!z-[120]"} title={i18n.language === "ru" ? "Доставка" : "Delivery"}
                              text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
     }
 
