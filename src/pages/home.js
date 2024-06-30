@@ -130,6 +130,9 @@ export default function Home() {
     useEffect(() => {
         if (responseInvite === "invite_true") {
             setResponse(null)
+            setDefaultLoading(null)
+            setIsLoading(null)
+            setResponseInvite(null)
             changeUrl()
         }
     }, [responseInvite]);
@@ -137,9 +140,9 @@ export default function Home() {
         return <FindDelivery simple/>
     }
 
-    if (isLoading) {
-        return <FindDelivery title={t("find_delivery_title")}/>;
-    }
+    // if (isLoading) {
+    //     return <div ><FindDelivery title={t("find_delivery_title")}/></div>;
+    // }
     if (response?.status === "not_need_client") {
         return <FindDelivery className={"!z-[120]"} title={i18n.language === "ru" ? "Доставка" : "Delivery"}
                              text={i18n.language === "ru" ? "Продолжаю доставку..." : "Continuing delivery..."}/>;
